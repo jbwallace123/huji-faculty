@@ -4,42 +4,54 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>HUJI Faculty — Neuro & AI</title>
-  <meta name="description" content="Faculty profiles with keywords and expandable summaries." />
+  <meta name="description" content="Faculty profiles with photos, keywords, filtering, and expandable summaries." />
   <style>
     :root{
       --bg:#0f1220; --card:#171a2b; --ink:#e9ecf1; --muted:#aab0c0; --accent:#6ee7b7;
     }
+    [data-theme="light"]{
+      --bg:#f6f7fb; --card:#ffffff; --ink:#0b0e1a; --muted:#5b6170; --accent:#10b981;
+    }
     *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:linear-gradient(180deg,#0b0e1a, #0f1220);color:var(--ink)}
-    header{padding:2.5rem 1.25rem;max-width:1200px;margin:auto}
-    header h1{font-size:clamp(1.6rem,3vw,2.4rem);margin:.2rem 0}
-    header p{color:var(--muted);max-width:52rem}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:var(--bg);color:var(--ink)}
+    header{padding:2rem 1.25rem;max-width:1200px;margin:auto;display:flex;gap:1rem;align-items:center;justify-content:space-between}
+    header h1{font-size:clamp(1.4rem,3vw,2.2rem);margin:.2rem 0}
+    header p{color:var(--muted);max-width:40rem;margin:0}
+    .controls{display:flex;gap:.5rem;align-items:center}
+    .controls input{padding:.45rem .6rem;border-radius:10px;border:1px solid #ccc;background:transparent;color:var(--ink)}
+    .controls button{border:none;border-radius:999px;padding:.45rem .7rem;cursor:pointer;background:var(--accent);color:#0b0e1a;font-weight:600}
     main{max-width:1200px;margin:auto;padding:1rem}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
-    .card{background:var(--card);border-radius:18px;padding:1rem;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-    .photo{width:100%;aspect-ratio:1/1;border-radius:14px;object-fit:cover;background:#0b0e1a}
+    .card{background:var(--card);border-radius:18px;padding:1rem;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+    .photo{width:100%;aspect-ratio:1/1;border-radius:14px;object-fit:cover;background:#e5e7eb}
     .name{font-size:1.05rem;margin:.75rem 0 .25rem 0}
     .keywords{display:flex;flex-wrap:wrap;gap:.4rem;margin:.25rem 0 .6rem}
     .tag{font-size:.75rem;color:#0b0e1a;background:var(--accent);padding:.25rem .5rem;border-radius:999px}
-    details{border-top:1px solid #23274a;margin-top:.5rem;padding-top:.5rem}
-    summary{cursor:pointer;color:#c7ccda;list-style:none}
+    details{border-top:1px solid rgba(0,0,0,.1);margin-top:.5rem;padding-top:.5rem}
+    summary{cursor:pointer;color:var(--muted);list-style:none}
     summary::-webkit-details-marker{display:none}
     summary::after{content:"▾";float:right;opacity:.6}
     details[open] summary::after{content:"▴"}
-    .summary-text{color:#d9dced;margin:.5rem 0 0;line-height:1.45}
+    .summary-text{color:var(--ink);margin:.5rem 0 0;line-height:1.45}
     footer{color:var(--muted);text-align:center;padding:2rem 1rem}
   </style>
 </head>
 <body>
   <header>
-    <h1>HUJI Faculty — Neuro & AI</h1>
-    <p>Faces, focus areas, and expandable summaries. Click to expand; no clutter, no nonsense.</p>
+    <div>
+      <h1>HUJI Faculty — Neuro & AI</h1>
+      <p>Photos, keywords, and expandable summaries. Filterable. Theme-switchable. Zero nonsense.</p>
+    </div>
+    <div class="controls">
+      <input id="search" type="search" placeholder="Filter by keyword or name" />
+      <button id="themeToggle">☀︎ / ☾</button>
+    </div>
   </header>
 
   <main>
-    <section class="grid">
-      <!-- Card template: duplicate as needed -->
-      <article class="card">
+    <section class="grid" id="grid">
+      <!-- FACULTY CARDS -->
+      <article class="card" data-tags="theoretical neuroscience neural computation statistical physics">
         <img class="photo" src="images/jonathan-kadmon.jpg" alt="Jonathan Kadmon" />
         <h3 class="name">Jonathan Kadmon</h3>
         <div class="keywords">
@@ -51,7 +63,7 @@
         </details>
       </article>
 
-      <article class="card">
+      <article class="card" data-tags="neural coding development whole-brain imaging zebrafish">
         <img class="photo" src="images/lilach-avitan.jpg" alt="Lilach Avitan" />
         <h3 class="name">Lilach Avitan</h3>
         <div class="keywords">
@@ -63,7 +75,7 @@
         </details>
       </article>
 
-      <article class="card">
+      <article class="card" data-tags="perception attention consciousness human neuroscience">
         <img class="photo" src="images/leon-deouell.jpg" alt="Leon Deouell" />
         <h3 class="name">Leon Deouell</h3>
         <div class="keywords">
@@ -75,12 +87,132 @@
         </details>
       </article>
 
-      <!-- Add remaining faculty cards here following the same pattern -->
+      <article class="card" data-tags="social neuroscience spatial navigation communication primates">
+        <img class="photo" src="images/david-omer.jpg" alt="David Omer" />
+        <h3 class="name">David Omer</h3>
+        <div class="keywords">
+          <span class="tag">Social neuroscience</span><span class="tag">Spatial representation</span><span class="tag">Communication</span>
+        </div>
+        <details>
+          <summary>Research summary</summary>
+          <p class="summary-text">Studies how primate brains encode space, social interactions, and individualized vocal signals, illuminating neural computations underlying navigation, social behavior, and communication.</p>
+        </details>
+      </article>
+
+      <article class="card" data-tags="neural circuits working memory theoretical neuroscience">
+        <img class="photo" src="images/yoram-burak.jpg" alt="Yoram Burak" />
+        <h3 class="name">Yoram Burak</h3>
+        <div class="keywords">
+          <span class="tag">Neural circuits</span><span class="tag">Working memory</span><span class="tag">Theory</span>
+        </div>
+        <details>
+          <summary>Research summary</summary>
+          <p class="summary-text">Investigates how neural circuits implement biologically relevant computations such as sensory inference, short-term memory, and motor control using theoretical and computational models.</p>
+        </details>
+      </article>
+
+      <article class="card" data-tags="machine learning computer vision probabilistic inference">
+        <img class="photo" src="images/yair-weiss.jpg" alt="Yair Weiss" />
+        <h3 class="name">Yair Weiss</h3>
+        <div class="keywords">
+          <span class="tag">Probabilistic inference</span><span class="tag">Computer vision</span><span class="tag">Machine learning</span>
+        </div>
+        <details>
+          <summary>Research summary</summary>
+          <p class="summary-text">Works at the intersection of computational neuroscience, machine learning, and computer vision, with foundational contributions to probabilistic inference and visual perception.</p>
+        </details>
+      </article>
+
+      <article class="card" data-tags="computational linguistics semantics language learning">
+        <img class="photo" src="images/omri-abend.jpg" alt="Omri Abend" />
+        <h3 class="name">Omri Abend</h3>
+        <div class="keywords">
+          <span class="tag">Computational semantics</span><span class="tag">NLP</span><span class="tag">Language learning</span>
+        </div>
+        <details>
+          <summary>Research summary</summary>
+          <p class="summary-text">Studies semantic representation from a computational perspective, connecting formal semantics with statistical learning and language technologies.</p>
+        </details>
+      </article>
+
+      <article class="card" data-tags="nlp large language models evaluation robustness">
+        <img class="photo" src="images/gabriel-stanovsky.jpg" alt="Gabriel Stanovsky" />
+        <h3 class="name">Gabriel Stanovsky</h3>
+        <div class="keywords">
+          <span class="tag">LLM evaluation</span><span class="tag">Robustness</span><span class="tag">NLP</span>
+        </div>
+        <details>
+          <summary>Research summary</summary>
+          <p class="summary-text">Focuses on evaluating and analyzing the behavior of large language models, addressing robustness, trust, and real-world deployment concerns.</p>
+        </details>
+      </article>
+
+      <article class="card" data-tags="reinforcement learning decision making computational neuroscience">
+        <img class="photo" src="images/yonatan-loewenstein.jpg" alt="Yonatan Loewenstein" />
+        <h3 class="name">Yonatan Loewenstein</h3>
+        <div class="keywords">
+          <span class="tag">Reinforcement learning</span><span class="tag">Decision-making</span><span class="tag">Computation</span>
+        </div>
+        <details>
+          <summary>Research summary</summary>
+          <p class="summary-text">Uses reinforcement learning frameworks and computational models to understand learning and decision-making and their neural constraints.</p>
+        </details>
+      </article>
+
+      <article class="card" data-tags="single-cell genomics aging alzheimers">
+        <img class="photo" src="images/naomi-habib.jpg" alt="Naomi Habib" />
+        <h3 class="name">Naomi Habib</h3>
+        <div class="keywords">
+          <span class="tag">Single-cell genomics</span><span class="tag">Brain aging</span><span class="tag">Neurodegeneration</span>
+        </div>
+        <details>
+          <summary>Research summary</summary>
+          <p class="summary-text">Studies the cellular and molecular basis of brain aging and Alzheimer’s disease using high-resolution genomics and computational approaches.</p>
+        </details>
+      </article>
+
+      <article class="card" data-tags="memory hippocampus naturalistic cognition">
+        <img class="photo" src="images/aya-ben-yakov.jpg" alt="Aya Ben-Yakov" />
+        <h3 class="name">Aya Ben-Yakov</h3>
+        <div class="keywords">
+          <span class="tag">Episodic memory</span><span class="tag">Hippocampus</span><span class="tag">Naturalistic stimuli</span>
+        </div>
+        <details>
+          <summary>Research summary</summary>
+          <p class="summary-text">Investigates how continuous experience is segmented into discrete memories, focusing on hippocampal dynamics during real-life events.</p>
+        </details>
+      </article>
     </section>
   </main>
 
   <footer>
-    <p>Hosted on GitHub Pages · Single-file build · Easy to extend</p>
+    <p>GitHub Pages · Single-file · Easily extensible</p>
   </footer>
+
+  <script>
+    // Theme toggle
+    const btn = document.getElementById('themeToggle');
+    btn.onclick = () => {
+      document.body.dataset.theme = document.body.dataset.theme === 'light' ? '' : 'light';
+    };
+
+    // Accordion: only one open at a time
+    document.querySelectorAll('details').forEach(d => {
+      d.addEventListener('toggle', e => {
+        if (d.open) document.querySelectorAll('details').forEach(o => o !== d && (o.open = false));
+      });
+    });
+
+    // Filter by name or keyword
+    const search = document.getElementById('search');
+    const cards = [...document.querySelectorAll('.card')];
+    search.addEventListener('input', () => {
+      const q = search.value.toLowerCase();
+      cards.forEach(c => {
+        const text = (c.innerText + ' ' + c.dataset.tags).toLowerCase();
+        c.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
 </body>
 </html>
