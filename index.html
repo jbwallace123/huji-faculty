@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HUJI Faculty — Neuro & AI</title>
+  <meta name="description" content="Faculty profiles with keywords and expandable summaries." />
+  <style>
+    :root{
+      --bg:#0f1220; --card:#171a2b; --ink:#e9ecf1; --muted:#aab0c0; --accent:#6ee7b7;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:linear-gradient(180deg,#0b0e1a, #0f1220);color:var(--ink)}
+    header{padding:2.5rem 1.25rem;max-width:1200px;margin:auto}
+    header h1{font-size:clamp(1.6rem,3vw,2.4rem);margin:.2rem 0}
+    header p{color:var(--muted);max-width:52rem}
+    main{max-width:1200px;margin:auto;padding:1rem}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+    .card{background:var(--card);border-radius:18px;padding:1rem;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .photo{width:100%;aspect-ratio:1/1;border-radius:14px;object-fit:cover;background:#0b0e1a}
+    .name{font-size:1.05rem;margin:.75rem 0 .25rem 0}
+    .keywords{display:flex;flex-wrap:wrap;gap:.4rem;margin:.25rem 0 .6rem}
+    .tag{font-size:.75rem;color:#0b0e1a;background:var(--accent);padding:.25rem .5rem;border-radius:999px}
+    details{border-top:1px solid #23274a;margin-top:.5rem;padding-top:.5rem}
+    summary{cursor:pointer;color:#c7ccda;list-style:none}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"▾";float:right;opacity:.6}
+    details[open] summary::after{content:"▴"}
+    .summary-text{color:#d9dced;margin:.5rem 0 0;line-height:1.45}
+    footer{color:var(--muted);text-align:center;padding:2rem 1rem}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>HUJI Faculty — Neuro & AI</h1>
+    <p>Faces, focus areas, and expandable summaries. Click to expand; no clutter, no nonsense.</p>
+  </header>
+
+  <main>
+    <section class="grid">
+      <!-- Card template: duplicate as needed -->
+      <article class="card">
+        <img class="photo" src="images/jonathan-kadmon.jpg" alt="Jonathan Kadmon" />
+        <h3 class="name">Jonathan Kadmon</h3>
+        <div class="keywords">
+          <span class="tag">Theoretical neuroscience</span><span class="tag">Neural computation</span><span class="tag">Statistical physics</span>
+        </div>
+        <details>
+          <summary>Research summary</summary>
+          <p class="summary-text">Research at the intersection of theoretical neuroscience, machine learning, and statistical physics, studying how collective computation and cognition emerge in large biological and artificial neural networks.</p>
+        </details>
+      </article>
+
+      <article class="card">
+        <img class="photo" src="images/lilach-avitan.jpg" alt="Lilach Avitan" />
+        <h3 class="name">Lilach Avitan</h3>
+        <div class="keywords">
+          <span class="tag">Neural coding</span><span class="tag">Development</span><span class="tag">Whole-brain imaging</span>
+        </div>
+        <details>
+          <summary>Research summary</summary>
+          <p class="summary-text">Studies how neural activity in the developing brain encodes sensory information and drives behavior using larval zebrafish, combining whole-brain recordings, behavior, and computational analysis.</p>
+        </details>
+      </article>
+
+      <article class="card">
+        <img class="photo" src="images/leon-deouell.jpg" alt="Leon Deouell" />
+        <h3 class="name">Leon Deouell</h3>
+        <div class="keywords">
+          <span class="tag">Perception</span><span class="tag">Attention</span><span class="tag">Consciousness</span>
+        </div>
+        <details>
+          <summary>Research summary</summary>
+          <p class="summary-text">Investigates how sensory information becomes coherent perception and conscious experience, focusing on timing, attention, and neural representations in the human brain.</p>
+        </details>
+      </article>
+
+      <!-- Add remaining faculty cards here following the same pattern -->
+    </section>
+  </main>
+
+  <footer>
+    <p>Hosted on GitHub Pages · Single-file build · Easy to extend</p>
+  </footer>
+</body>
+</html>
