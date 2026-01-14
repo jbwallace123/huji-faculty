@@ -8,20 +8,20 @@
   <style>
     :root {
       --bg: #0f1220;
-      --card: #171a2b;
+      --card: #14154C;
       --ink: #e9ecf1;
       --muted: #aab0c0;
-      --accent: #6ee7b7;
-      --overlay: rgba(0,0,0,0.6);
+      --accent: #980099;
+      --overlay: #ffffff;
     }
 
     body[data-theme="light"] {
       --bg: #f6f7fb;
-      --card: #ffffff;
+      --card: #f2f2fa;
       --ink: #0b0e1a;
       --muted: #5b6170;
-      --accent: #10b981;
-      --overlay: rgba(0,0,0,0.4);
+      --accent: #980099;
+      --overlay: #ffffff;
     }
 
     * { box-sizing: border-box; }
@@ -172,13 +172,13 @@
   </style>
 </head>
 
-<body data-theme="dark">
+<body data-theme="light">
 
 <header>
   <div>
     <h1>HUJI Faculty — Neuro & AI</h1>
     <p>Click a name to share or explore. Details slide in from the side.</p>
-    <p>Interested in learning more about a particular faculty member? Please indicate your interest in this <a href="https://forms.gle/WtfYGuhhZtTuePtv6" target="_blank">Google Form</a> </p>
+    <p>Interested in learning more about a particular faculty member? Please indicate your interest in this <a href="https://forms.gle/WtfYGuhhZtTuePtv6" target="_blank">Google form</a> </p>
   </div>
   <div class="controls">
     <input id="search" type="search" placeholder="Search name or keyword">
@@ -189,7 +189,7 @@
 <main>
   <section class="grid">
 
-    <article class="card" id="kadmon" data-name="Jonathan Kadmon" data-summary="Research at the intersection of theoretical neuroscience, machine learning, and statistical physics, studying how collective computation and cognition emerge in large neural networks." data-lab="https://elsc.huji.ac.il/people-directory/faculty-members/jonathan-kadmon/" data-github="https://github.com/kadmon-lab/" data-photo="images/jonathan-kadmon.jpg">
+    <article class="card" id="kadmon" data-name="Jonathan Kadmon" data-summary="Research at the intersection of theoretical neuroscience, machine learning, and statistical physics, studying how collective computation and cognition emerge in large neural networks." data-lab="https://elsc.huji.ac.il/people-directory/faculty-members/jonathan-kadmon/" data-github="" data-photo="images/jonathan-kadmon.jpg" data-googles="https://scholar.google.com/citations?user=77MU6_sAAAAJ&hl=en">
       <!-- removed inline photo; photo now shown only in side peek -->
       <h3 class="name"><a href="#kadmon">Jonathan Kadmon</a></h3>
       <div class="keywords">
@@ -199,7 +199,7 @@
       </div>
     </article>
 
-    <article class="card" id="avitan" data-name="Lilach Avitan" data-summary="Avitan studies how neural activity in the developing brain encodes sensory information and drives behavior, using larval zebrafish as a model system. Her lab combines whole-brain neural recordings, behavioral analysis, and computational/statistical methods to uncover principles of neural coding and circuit development." data-lab="https://elsc.huji.ac.il/people-directory/faculty-members/lilach-avitan/" data-github="" data-photo="images/lilach-avitan.jpg">
+    <article class="card" id="avitan" data-name="Lilach Avitan" data-summary="Avitan studies how neural activity in the developing brain encodes sensory information and drives behavior, using larval zebrafish as a model system. Her lab combines whole-brain neural recordings, behavioral analysis, and computational/statistical methods to uncover principles of neural coding and circuit development." data-lab="https://elsc.huji.ac.il/people-directory/faculty-members/lilach-avitan/" data-github="" data-photo="images/lilach-avitan.jpg" data-googles="https://scholar.google.com/citations?user=gapEMwoAAAAJ&hl=en">
       <!-- removed inline photo; photo now shown only in side peek -->
       <h3 class="name"><a href="#avitan">Lilach Avitan</a></h3>
       <div class="keywords">
@@ -209,11 +209,101 @@
       </div>
     </article>
 
+    <article class="card" id="deouell" data-name="Leon Deouell" data-summary="Deouell investigates how sensory information is integrated into coherent perceptual and conscious experience. His work focuses on timing, attention, and representational dynamics in the human brain, using electrophysiological and experimental approaches to study perception and awareness." data-lab="https://www.hcnl.org/" data-github="" data-photo="images/leon-deouell.jpg" data-googles="https://scholar.google.com/citations?user=7vN1fX4AAAAJ&hl=en">
+      <!-- removed inline photo; photo now shown only in side peek -->
+      <h3 class="name"><a href="#deouell">Leon Deouell</a></h3>
+      <div class="keywords">
+        <span class="tag">Perception & attention</span>
+        <span class="tag">Consciousness</span>
+        <span class="tag">Neural timing</span>
+      </div>
+    </article>
+
+    <article class="card" id="omer" data-name="David Omer" data-summary="Omer’s research bridges systems neuroscience, social cognition, and communication. By studying how primate brains encode space, social interactions, and individual-specific vocal signals, his work sheds light on neural computations underlying navigation, social behavior, and the evolutionary roots of communication." data-lab="https://www.omerlab.org/" data-github="" data-photo="images/david-omer.jpg" data-googles="https://scholar.google.com/citations?user=hyv6G4cAAAAJ&hl=en">
+      <!-- removed inline photo; photo now shown only in side peek -->
+      <h3 class="name"><a href="#omer">David Omer</a></h3>
+      <div class="keywords">
+        <span class="tag">Social neuroscience</span>
+        <span class="tag">Spatial representation</span>
+        <span class="tag">Communication</span>
+      </div>
+    </article>
+
+    <article class="card" id="burak" data-name="Yoram Burak" data-summary="Burak’s group studies how neural circuits implement biologically relevant computations, including sensory inference, short-term memory maintenance, and motor control. His work emphasizes theoretical and computational models that link circuit dynamics to function." data-lab="https://www.buraklab.me/" data-github="" data-photo="images/yoram-burak.jpg" data-googles="https://scholar.google.com/citations?user=rd5lkRkAAAAJ&hl=en">
+      <!-- removed inline photo; photo now shown only in side peek -->
+      <h3 class="name"><a href="#burak">Yoram Burak</a></h3>
+      <div class="keywords">
+        <span class="tag">Neural circuit computation</span>
+        <span class="tag">Working memory</span>
+        <span class="tag">Theoretical models</span>
+      </div>
+    </article>
+
+    <article class="card" id="weiss" data-name="Yair Weiss" data-summary="Weiss works at the intersection of computational neuroscience, machine learning, and computer vision. He is known for foundational contributions to probabilistic inference, visual perception, and learning algorithms that inform how biological and artificial systems interpret sensory data." data-lab="https://www.cs.huji.ac.il/~yweiss/" data-github="" data-photo="images/weiss-yair.jpg" data-googles="https://scholar.google.co.il/citations?hl=en&user=9DXQi8gAAAAJ">
+      <!-- removed inline photo; photo now shown only in side peek -->
+      <h3 class="name"><a href="#weiss">Yair Weiss</a></h3>
+      <div class="keywords">
+        <span class="tag">Probabilistic inference</span>
+        <span class="tag">Computer vision</span>
+        <span class="tag">Computational neuroscience</span>
+      </div>
+    </article>
+
+    <article class="card" id="abend" data-name="Omri Abend" data-summary="Abend studies semantic representation from a computational perspective. His research connects formal semantics with statistical learning and language technologies such as machine translation and information extraction, and includes computational modeling of language acquisition." data-lab="https://www.cs.huji.ac.il/~oabend/" data-github="" data-photo="images/omri-abend.jpg" data-googles="https://scholar.google.com/citations?user=BD_hRzYAAAAJ&hl=en">
+      <!-- removed inline photo; photo now shown only in side peek -->
+      <h3 class="name"><a href="#abend">Omri Abend</a></h3>
+      <div class="keywords">
+        <span class="tag">Computational semantics</span>
+        <span class="tag">Natural language understanding</span>
+        <span class="tag">Language learning</span>
+      </div>
+    </article>
+
+    <article class="card" id="stanovsky" data-name="Gabriel Stanovsky" data-summary="Stanovsky’s research focuses on natural language processing, with an emphasis on evaluation, robustness, and behavioral analysis of large language models. His work addresses how NLP systems should be tested, interpreted, and trusted in real-world settings." data-lab="https://gabrielstanovsky.github.io/" data-github="https://github.com/gabrielStanovsky" data-photo="images/gabriel-stanovsky.jpg" data-googles="https://scholar.google.com/citations?user=AtkvBFYAAAAJ&hl=en">
+      <!-- removed inline photo; photo now shown only in side peek -->
+      <h3 class="name"><a href="#stanovsky">Gabriel Stanovsky</a></h3>
+      <div class="keywords">
+        <span class="tag">NLP evaluation</span>
+        <span class="tag">Large language models</span>
+        <span class="tag">Model robustness</span>
+      </div>
+    </article>
+
+    <article class="card" id="loewenstein" data-name="Yonatan Loewenstein" data-summary="Loewenstein studies learning and decision-making at the intersection of computation, cognition, and neuroscience. Using reinforcement learning and theoretical models, he investigates how adaptive behavior emerges through interaction with the environment and how these processes are constrained by neural systems." data-lab="https://loewenstein.huji.ac.il/" data-github="" data-photo="images/yonatan-loewenstein.jpg" data-googles="https://scholar.google.com/citations?user=Isnd7NgAAAAJ&hl=en">
+      <!-- removed inline photo; photo now shown only in side peek -->
+      <h3 class="name"><a href="#loewenstein">Yonatan Loewenstein</a></h3>
+      <div class="keywords">
+        <span class="tag">Reinforcement learning</span>
+        <span class="tag">Decision making</span>
+        <span class="tag">Computational cognition</span>
+      </div>
+    </article>
+
+    <article class="card" id="habib" data-name="Naomi Habib" data-summary="Habib investigates the cellular and molecular basis of brain aging and Alzheimer’s disease using high-resolution genomics and computational analysis. Her work maps brain cell types, interactions, and disease trajectories to distinguish normal aging from pathological decline." data-lab="https://elsc.huji.ac.il/people-directory/faculty-members/naomi-habib/" data-github="" data-photo="images/naomi-habib.jpg" data-googles="https://scholar.google.com/citations?user=ahSdPv8AAAAJ&hl=en">
+      <!-- removed inline photo; photo now shown only in side peek -->
+      <h3 class="name"><a href="#habib">Naomi Habib</a></h3>
+      <div class="keywords">
+        <span class="tag">Single-cell genomics</span>
+        <span class="tag">Brain aging</span>
+        <span class="tag">Neurodegeneration</span>
+      </div>
+    </article>
+
+    <article class="card" id="ben-yakov" data-name="Aya Ben-Yakov" data-summary="Ben-Yakov studies how continuous experience is segmented into discrete memories in the human brain, with a focus on hippocampal function. Using naturalistic stimuli, neuroimaging, and behavior, her work examines real-life memory formation and event organization." data-lab="https://www.abymemlab.com/" data-github="" data-photo="images/aya-ben.jpg" data-googles="https://scholar.google.com/citations?user=nR7gRA0AAAAJ&hl=iw">
+      <!-- removed inline photo; photo now shown only in side peek -->
+      <h3 class="name"><a href="#ben-yakov">Aya Ben-Yakov</a></h3>
+      <div class="keywords">
+        <span class="tag">Episodic memory</span>
+        <span class="tag">Hippocampus</span>
+        <span class="tag">Naturalistic cognition</span>
+      </div>
+    </article>
+
   </section>
 </main>
 
 <footer>
-  Shareable deep links · Side peek details · Single file
+  Kempner Institute · Harvard University · The Edmond & Lily Safra Center for Brain Sciences · Hebrew University of Jerusalem
 </footer>
 
 <!-- Side Peek Panel -->
@@ -263,6 +353,9 @@
     }
     if (card.dataset.github) {
       peekLinks.innerHTML += `<a href="${card.dataset.github}" target="_blank">GitHub</a>`;
+    }
+    if (card.dataset.googles) {
+      peekLinks.innerHTML += `<a href="${card.dataset.googles}" target="_blank">Google Scholar</a>`;
     }
     peek.classList.add('open');
   }
