@@ -163,26 +163,26 @@
       font-size: 1.2rem;
       cursor: pointer;
     }
+    .peek-interest {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .peek-interest a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .peek-interest a:hover {
+      text-decoration: underline;
+    }
 
     footer {
       text-align: center;
       color: var(--muted);
       padding: 2rem 1rem;
-    }
-
-    .interest {
-      margin-top: 1.5rem;
-    }
-
-    .interest a {
-      font-size: 0.9rem;
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .interest a:hover {
-      text-decoration: underline;
     }
   </style>
 </head>
@@ -193,8 +193,8 @@
   <div>
     <h1>HUJI Faculty — Neuro & AI</h1>
     <p>Click a name to share or explore. Details slide in from the side.</p>
-    <p>Kempner Institute and HUJI are interested in collaborating on research projects together. Please fill out <a href="https://forms.gle/WtfYGuhhZtTuePtv6" target="_blank">this form</a> to indicate your interest in relevant faculty.</p>
-    <p>This does not commit you to a collaboration only indicates your interest in talking further.</p>
+    <p>Kempner Institute and HUJI are interested in collaborating on research projects together. Please fill out <a href="https://forms.gle/WtfYGuhhZtTuePtv6" target="_blank">this form</a> to indicate your interest in relevant faculty.
+    This does not commit you to a collaboration only indicates your interest in talking further.</p>
   </div>
   <div class="controls">
     <input id="search" type="search" placeholder="Search name or keyword">
@@ -213,10 +213,6 @@
         <span class="tag">Neural computation</span>
         <span class="tag">Statistical physics</span>
       </div>
-
-      <div class="interest">
-        <a href="https://forms.gle/WtfYGuhhZtTuePtv6" target="_blank" rel="noopener"> I’m interested → </a>
-      </div>
     </article>
 
     <article class="card" id="avitan" data-name="Lilach Avitan" data-summary="Avitan studies how neural activity in the developing brain encodes sensory information and drives behavior, using larval zebrafish as a model system. Her lab combines whole-brain neural recordings, behavioral analysis, and computational/statistical methods to uncover principles of neural coding and circuit development." data-lab="https://elsc.huji.ac.il/people-directory/faculty-members/lilach-avitan/" data-github="" data-photo="images/lilach-avitan.jpg" data-googles="https://scholar.google.com/citations?user=gapEMwoAAAAJ&hl=en">
@@ -226,10 +222,6 @@
         <span class="tag">Neural coding</span>
         <span class="tag">Developmental neuroscience</span>
         <span class="tag">Whole-brain imaging</span>
-      </div>
-
-      <div class="interest">
-        <a href="https://forms.gle/WtfYGuhhZtTuePtv6" target="_blank" rel="noopener"> I’m interested → </a>
       </div>
     </article>
 
@@ -241,10 +233,6 @@
         <span class="tag">Consciousness</span>
         <span class="tag">Neural timing</span>
       </div>
-
-      <div class="interest">
-        <a href="https://forms.gle/WtfYGuhhZtTuePtv6" target="_blank" rel="noopener"> I’m interested → </a>
-      </div>
     </article>
 
     <article class="card" id="omer" data-name="David Omer" data-summary="Omer’s research bridges systems neuroscience, social cognition, and communication. By studying how primate brains encode space, social interactions, and individual-specific vocal signals, his work sheds light on neural computations underlying navigation, social behavior, and the evolutionary roots of communication." data-lab="https://www.omerlab.org/" data-github="" data-photo="images/david-omer.jpg" data-googles="https://scholar.google.com/citations?user=hyv6G4cAAAAJ&hl=en">
@@ -254,10 +242,6 @@
         <span class="tag">Social neuroscience</span>
         <span class="tag">Spatial representation</span>
         <span class="tag">Communication</span>
-      </div>
-
-      <div class="interest">
-        <a href="https://forms.gle/WtfYGuhhZtTuePtv6" target="_blank" rel="noopener"> I’m interested → </a>
       </div>
     </article>
 
@@ -269,10 +253,6 @@
         <span class="tag">Working memory</span>
         <span class="tag">Theoretical models</span>
       </div>
-
-      <div class="interest">
-        <a href="https://forms.gle/WtfYGuhhZtTuePtv6" target="_blank" rel="noopener"> I’m interested → </a>
-      </div>
     </article>
 
     <article class="card" id="weiss" data-name="Yair Weiss" data-summary="Weiss works at the intersection of computational neuroscience, machine learning, and computer vision. He is known for foundational contributions to probabilistic inference, visual perception, and learning algorithms that inform how biological and artificial systems interpret sensory data." data-lab="https://www.cs.huji.ac.il/~yweiss/" data-github="" data-photo="images/weiss-yair.jpg" data-googles="https://scholar.google.co.il/citations?hl=en&user=9DXQi8gAAAAJ">
@@ -282,10 +262,6 @@
         <span class="tag">Probabilistic inference</span>
         <span class="tag">Computer vision</span>
         <span class="tag">Computational neuroscience</span>
-      </div>
-
-      <div class="interest">
-        <a href="https://forms.gle/WtfYGuhhZtTuePtv6" target="_blank" rel="noopener"> I’m interested → </a>
       </div>
     </article>
 
@@ -297,10 +273,6 @@
         <span class="tag">Natural language understanding</span>
         <span class="tag">Language learning</span>
       </div>
-
-      <div class="interest">
-        <a href="https://forms.gle/WtfYGuhhZtTuePtv6" target="_blank" rel="noopener"> I’m interested → </a>
-      </div>
     </article>
 
     <article class="card" id="stanovsky" data-name="Gabriel Stanovsky" data-summary="Stanovsky’s research focuses on natural language processing, with an emphasis on evaluation, robustness, and behavioral analysis of large language models. His work addresses how NLP systems should be tested, interpreted, and trusted in real-world settings." data-lab="https://gabrielstanovsky.github.io/" data-github="https://github.com/gabrielStanovsky" data-photo="images/gabriel-stanovsky.jpg" data-googles="https://scholar.google.com/citations?user=AtkvBFYAAAAJ&hl=en">
@@ -310,10 +282,6 @@
         <span class="tag">NLP evaluation</span>
         <span class="tag">Large language models</span>
         <span class="tag">Model robustness</span>
-      </div>
-
-      <div class="interest">
-        <a href="https://forms.gle/WtfYGuhhZtTuePtv6" target="_blank" rel="noopener"> I’m interested → </a>
       </div>
     </article>
 
@@ -325,10 +293,6 @@
         <span class="tag">Decision making</span>
         <span class="tag">Computational cognition</span>
       </div>
-
-      <div class="interest">
-        <a href="https://forms.gle/WtfYGuhhZtTuePtv6" target="_blank" rel="noopener"> I’m interested → </a>
-      </div>
     </article>
 
     <article class="card" id="habib" data-name="Naomi Habib" data-summary="Habib investigates the cellular and molecular basis of brain aging and Alzheimer’s disease using high-resolution genomics and computational analysis. Her work maps brain cell types, interactions, and disease trajectories to distinguish normal aging from pathological decline." data-lab="https://elsc.huji.ac.il/people-directory/faculty-members/naomi-habib/" data-github="" data-photo="images/naomi-habib.jpg" data-googles="https://scholar.google.com/citations?user=ahSdPv8AAAAJ&hl=en">
@@ -339,10 +303,6 @@
         <span class="tag">Brain aging</span>
         <span class="tag">Neurodegeneration</span>
       </div>
-
-      <div class="interest">
-        <a href="https://forms.gle/WtfYGuhhZtTuePtv6" target="_blank" rel="noopener"> I’m interested → </a>
-      </div>
     </article>
 
     <article class="card" id="ben-yakov" data-name="Aya Ben-Yakov" data-summary="Ben-Yakov studies how continuous experience is segmented into discrete memories in the human brain, with a focus on hippocampal function. Using naturalistic stimuli, neuroimaging, and behavior, her work examines real-life memory formation and event organization." data-lab="https://www.abymemlab.com/" data-github="" data-photo="images/aya-ben.jpg" data-googles="https://scholar.google.com/citations?user=nR7gRA0AAAAJ&hl=iw">
@@ -352,10 +312,6 @@
         <span class="tag">Episodic memory</span>
         <span class="tag">Hippocampus</span>
         <span class="tag">Naturalistic cognition</span>
-      </div>
-
-      <div class="interest">
-        <a href="https://forms.gle/WtfYGuhhZtTuePtv6" target="_blank" rel="noopener"> I’m interested → </a>
       </div>
     </article>
 
@@ -373,6 +329,15 @@
   <h2 id="peekName"></h2>
   <div class="links" id="peekLinks"></div>
   <p class="summary" id="peekSummary"></p>
+  <div class="peek-interest">
+    <a
+      href="https://forms.gle/WtfYGuhhZtTuePtv6"
+      target="_blank"
+      rel="noopener"
+    >
+      I’m interested →
+    </a>
+  </div>
 </aside>
 
 <script>
