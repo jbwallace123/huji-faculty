@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Publications — Kempner × ELSC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">Kempner <span class="x">×</span> ELSC</a>
+    <nav class="nav-links">
+      <a href="faculty.html">Faculty</a>
+      <a href="news.html">News</a>
+      <a href="events.html">Events</a>
+      <a href="publications.html" class="active">Publications</a>
+    </nav>
+    <div class="nav-actions"></div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <a class="page-back" href="index.html">← Back to directory</a>
+    <h1>Publications</h1>
+    <p class="page-header-sub">Featured papers and research highlights from the Kempner × ELSC collaboration.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <ul class="research-list" id="researchList"></ul>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-orgs">
+      Kempner Institute · Harvard University
+      &nbsp;·&nbsp;
+      Edmond &amp; Lily Safra Center for Brain Sciences · Hebrew University of Jerusalem
+    </p>
+    <a class="footer-link" href="https://forms.gle/WtfYGuhhZtTuePtv6" target="_blank" rel="noopener">
+      Indicate collaboration interest →
+    </a>
+  </div>
+</footer>
+
+<script>
+// ── PUBLICATIONS DATA — add items: { title, authors, venue, url } ─────────────
+const RESEARCH = [
+  {
+    title: "Add a featured paper or research highlight here",
+    authors: "Author A., Author B., et al.",
+    venue: "Journal / Conference · Year",
+    url: "#"
+  },
+  {
+    title: "Add a second paper or research highlight",
+    authors: "Author A., Author B.",
+    venue: "Journal / Conference · Year",
+    url: "#"
+  },
+  {
+    title: "Add a third paper or ongoing project",
+    authors: "Author A., Author B.",
+    venue: "Journal / Conference · Year",
+    url: "#"
+  }
+];
+
+const resList = document.getElementById('researchList');
+RESEARCH.forEach(r => {
+  const li = document.createElement('li');
+  li.className = 'research-item';
+  li.innerHTML = `
+    <a class="research-title" href="${r.url}" target="_blank" rel="noopener">${r.title}</a>
+    <div class="research-meta">
+      <span class="research-authors">${r.authors}</span>
+      <span class="research-venue">${r.venue}</span>
+    </div>
+  `;
+  resList.appendChild(li);
+});
+</script>
+
+</body>
+</html>

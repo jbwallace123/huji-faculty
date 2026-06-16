@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Collaborating Faculty — Kempner × ELSC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">Kempner <span class="x">×</span> ELSC</a>
+    <nav class="nav-links">
+      <a href="faculty.html" class="active">Faculty</a>
+      <a href="news.html">News</a>
+      <a href="events.html">Events</a>
+      <a href="publications.html">Publications</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="search-wrap">
+        <span class="search-icon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </span>
+        <input id="search" type="search" placeholder="Search faculty…">
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <a class="page-back" href="index.html">← Back to home</a>
+    <h1>Collaborating Faculty</h1>
+    <p class="page-header-sub">Researchers from the Kempner Institute and ELSC working at the intersection of neuroscience and AI.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2 class="section-title">Harvard Faculty</h2>
+      <span class="badge" id="harvardBadge"></span>
+    </div>
+    <div class="grid" id="harvardGrid"></div>
+
+    <div class="section-head" style="margin-top: 4rem;">
+      <h2 class="section-title">ELSC Faculty</h2>
+      <span class="badge" id="hujiBadge"></span>
+    </div>
+    <div class="grid" id="hujiGrid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-orgs">
+      Kempner Institute · Harvard University
+      &nbsp;·&nbsp;
+      Edmond &amp; Lily Safra Center for Brain Sciences · Hebrew University of Jerusalem
+    </p>
+    <a class="footer-link" href="https://forms.gle/WtfYGuhhZtTuePtv6" target="_blank" rel="noopener">
+      Indicate collaboration interest →
+    </a>
+  </div>
+</footer>
+
+<!-- Side Peek Panel -->
+<div class="overlay" id="overlay"></div>
+<aside class="peek" id="peek">
+  <div class="peek-topbar">
+    <button class="peek-close" id="peekClose">✕ close</button>
+  </div>
+  <img class="peek-photo" id="peekPhoto" src="" alt="">
+  <div class="peek-content">
+    <h2 class="peek-name" id="peekName"></h2>
+    <div class="peek-links" id="peekLinks"></div>
+    <p class="peek-summary" id="peekSummary"></p>
+    <a class="peek-cta" href="https://forms.gle/WtfYGuhhZtTuePtv6" target="_blank" rel="noopener">
+      I'm interested in collaborating →
+    </a>
+  </div>
+</aside>
+
+<script>
+const FACULTY = [
+  {
+    id: "kadmon",
+    name: "Jonathan Kadmon",
+    photo: "images/jonathan-kadmon.jpg",
+    tags: ["Theoretical neuroscience", "Neural computation", "Statistical physics"],
+    summary: "Research at the intersection of theoretical neuroscience, machine learning, and statistical physics, studying how collective computation and cognition emerge in large neural networks.",
+    lab: "https://elsc.huji.ac.il/people-directory/faculty-members/jonathan-kadmon/",
+    github: "",
+    scholar: "https://scholar.google.com/citations?user=77MU6_sAAAAJ&hl=en"
+  },
+  {
+    id: "avitan",
+    name: "Lilach Avitan",
+    photo: "images/lilach-avitan.jpg",
+    tags: ["Neural coding", "Developmental neuroscience", "Whole-brain imaging"],
+    summary: "Avitan studies how neural activity in the developing brain encodes sensory information and drives behavior, using larval zebrafish as a model system. Her lab combines whole-brain neural recordings, behavioral analysis, and computational methods to uncover principles of neural coding and circuit development.",
+    lab: "https://elsc.huji.ac.il/people-directory/faculty-members/lilach-avitan/",
+    github: "",
+    scholar: "https://scholar.google.com/citations?user=gapEMwoAAAAJ&hl=en"
+  },
+  {
+    id: "elkan",
+    name: "Eli Nelken",
+    photo: "images/eli_nelken.jpg",
+    tags: ["Auditory neuroscience", "Sensory processing", "Systems neuroscience"],
+    summary: "Nelken studies how the auditory system encodes and interprets sound, combining electrophysiology, computational modeling, and systems neuroscience approaches. His work investigates how neural circuits process complex sensory environments and adapt to natural acoustic signals.",
+    lab: "https://elsc.huji.ac.il/people-directory/faculty-members/israel-nelken/",
+    github: "",
+    scholar: "https://scholar.google.com/citations?user=6_UmGu0AAAAJ&hl=en"
+  },
+  {
+    id: "omer",
+    name: "David Omer",
+    photo: "images/david-omer.jpg",
+    tags: ["Social neuroscience", "Spatial representation", "Communication"],
+    summary: "Omer's research bridges systems neuroscience, social cognition, and communication. By studying how primate brains encode space, social interactions, and individual-specific vocal signals, his work sheds light on neural computations underlying navigation, social behavior, and the evolutionary roots of communication.",
+    lab: "https://www.omerlab.org/",
+    github: "",
+    scholar: "https://scholar.google.com/citations?user=hyv6G4cAAAAJ&hl=en"
+  },
+  {
+    id: "burak",
+    name: "Yoram Burak",
+    photo: "images/yoram-burak.jpg",
+    tags: ["Neural circuit computation", "Working memory", "Theoretical models"],
+    summary: "Burak's group studies how neural circuits implement biologically relevant computations, including sensory inference, short-term memory maintenance, and motor control. His work emphasizes theoretical and computational models that link circuit dynamics to function.",
+    lab: "https://www.buraklab.me/",
+    github: "",
+    scholar: "https://scholar.google.com/citations?user=rd5lkRkAAAAJ&hl=en"
+  },
+  {
+    id: "weiss",
+    name: "Yair Weiss",
+    photo: "images/weiss-yair.jpg",
+    tags: ["Probabilistic inference", "Computer vision", "Computational neuroscience"],
+    summary: "Weiss works at the intersection of computational neuroscience, machine learning, and computer vision. He is known for foundational contributions to probabilistic inference, visual perception, and learning algorithms that inform how biological and artificial systems interpret sensory data.",
+    lab: "https://www.cs.huji.ac.il/~yweiss/",
+    github: "",
+    scholar: "https://scholar.google.co.il/citations?hl=en&user=9DXQi8gAAAAJ"
+  },
+  {
+    id: "abend",
+    name: "Omri Abend",
+    photo: "images/omri-abend.jpg",
+    tags: ["Computational semantics", "Natural language understanding", "Language learning"],
+    summary: "Abend studies semantic representation from a computational perspective. His research connects formal semantics with statistical learning and language technologies such as machine translation and information extraction, and includes computational modeling of language acquisition.",
+    lab: "https://www.cs.huji.ac.il/~oabend/",
+    github: "",
+    scholar: "https://scholar.google.com/citations?user=BD_hRzYAAAAJ&hl=en"
+  },
+  {
+    id: "stanovsky",
+    name: "Gabriel Stanovsky",
+    photo: "images/gabriel-stanovsky.jpg",
+    tags: ["NLP evaluation", "Large language models", "Model robustness"],
+    summary: "Stanovsky's research focuses on natural language processing, with an emphasis on evaluation, robustness, and behavioral analysis of large language models. His work addresses how NLP systems should be tested, interpreted, and trusted in real-world settings.",
+    lab: "https://gabrielstanovsky.github.io/",
+    github: "https://github.com/gabrielStanovsky",
+    scholar: "https://scholar.google.com/citations?user=AtkvBFYAAAAJ&hl=en"
+  },
+  {
+    id: "loewenstein",
+    name: "Yonatan Loewenstein",
+    photo: "images/yonatan-loewenstein.jpg",
+    tags: ["Reinforcement learning", "Decision making", "Computational cognition"],
+    summary: "Loewenstein studies learning and decision-making at the intersection of computation, cognition, and neuroscience. Using reinforcement learning and theoretical models, he investigates how adaptive behavior emerges through interaction with the environment and how these processes are constrained by neural systems.",
+    lab: "https://loewenstein.huji.ac.il/",
+    github: "",
+    scholar: "https://scholar.google.com/citations?user=Isnd7NgAAAAJ&hl=en"
+  },
+  {
+    id: "lottem",
+    name: "Eran Lottem",
+    photo: "images/eran-lotem.jpg",
+    tags: ["Neuromodulation", "Behavioral neuroscience", "Circuit neuroscience"],
+    summary: "Lottem investigates how neuromodulatory systems shape learning, motivation, and adaptive behavior. Using in vivo recordings and circuit-level manipulations, his lab studies how internal brain states influence cognition and decision-making.",
+    lab: "https://elsc.huji.ac.il/people-directory/faculty-members/eran-lottem/",
+    github: "",
+    scholar: "https://scholar.google.com/citations?user=1XwzF0EAAAAJ&hl=en"
+  },
+  {
+    id: "joskowicz",
+    name: "Leo Joskowicz",
+    photo: "images/leo-josko.jpg",
+    tags: ["Medical robotics", "Computer-assisted surgery", "Computer vision"],
+    summary: "Joskowicz develops computational and robotic systems for image-guided interventions and computer-assisted surgery. His work integrates medical imaging, computer vision, and robotics to improve precision and safety in clinical procedures.",
+    lab: "https://www.cs.huji.ac.il/~josko/",
+    github: "",
+    scholar: "https://scholar.google.com/citations?user=PoyxglsAAAAJ&hl=en"
+  },
+  {
+    id: "arzy",
+    name: "Shahar Arzy",
+    photo: "images/shahar-arzy.jpg",
+    tags: ["Consciousness", "Neuropsychiatry", "Human cognition"],
+    summary: "Arzy investigates the neural basis of self-consciousness, memory, and human experience at the intersection of neurology, psychiatry, and cognitive neuroscience. His work combines clinical observations, neuroimaging, and computational approaches to study perception and the sense of self.",
+    lab: "https://www.neuropsychiatrylab.com/",
+    github: "",
+    scholar: "https://scholar.google.com/citations?user=REJXK9IAAAAJ&hl=en"
+  },
+  {
+    id: "forkosh",
+    name: "Oren Forkosh",
+    photo: "images/oren-forkosh.png",
+    tags: ["Social neuroscience", "Behavior", "Computational psychiatry"],
+    summary: "Forkosh studies the neural and computational mechanisms underlying social behavior and psychiatric disorders. His research combines behavioral assays, neural recordings, and machine learning approaches to uncover how brain circuits regulate social interactions.",
+    lab: "https://www.forkoshlab.com/",
+    github: "https://github.com/OrenForkosh",
+    scholar: "https://scholar.google.com/citations?user=B5P3zsoAAAAJ&hl=en"
+  },
+  {
+    id: "bergman",
+    name: "Hagai Bergman",
+    photo: "images/hagai-bergman.png",
+    tags: ["Basal ganglia", "Movement disorders", "Systems neuroscience"],
+    summary: "Bergman is known for pioneering work on the basal ganglia and their role in motor control and decision-making. His research combines electrophysiology, computational analysis, and clinical neuroscience to better understand disorders such as Parkinson's disease.",
+    lab: "https://elsc.huji.ac.il/people-directory/faculty-members/hagai-bergman/",
+    github: "",
+    scholar: "https://scholar.google.com/citations?user=B4gaBMwAAAAJ&hl=en"
+  },
+  {
+    id: "joshua",
+    name: "Mati Joshua",
+    photo: "images/mati-joshua.jpg",
+    tags: ["Motor control", "Decision making", "Systems neuroscience"],
+    summary: "Joshua studies how neural circuits support motor learning, timing, and decision-making. His research combines electrophysiology and behavioral neuroscience to understand how the brain selects and refines actions.",
+    lab: "https://elsc.huji.ac.il/people-directory/faculty-members/mati-joshua/",
+    github: "",
+    scholar: "https://scholar.google.com/citations?user=rZVeNEYAAAAJ&hl=en"
+  },
+  {
+    id: "feder",
+    name: "Amir Feder",
+    photo: "images/amir-feder.jpg",
+    tags: ["Natural language processing", "Causal inference", "Language models"],
+    summary: "Feder develops methods that integrate causal reasoning with natural language processing and large language models. His work focuses on understanding human behavior through language and building NLP systems that support scientific and social inquiry.",
+    lab: "https://www.amirfeder.com/",
+    github: "https://github.com/amirfeder",
+    scholar: "https://scholar.google.com/citations?user=ERwoPLIAAAAJ&hl=en&authuser=1"
+  },
+  {
+    id: "nitzan",
+    name: "Mor Nitzan",
+    photo: "images/mor-nitzan.avif",
+    tags: ["Systems biology", "Single-cell genomics", "Complex systems"],
+    summary: "Nitzan studies how collective behavior and self-organization emerge in multicellular biological systems. Her research combines machine learning, dynamical systems, and computational biology to infer cellular interactions and large-scale biological structure from single-cell data.",
+    lab: "https://www.nitzanlab.com/",
+    github: "https://github.com/nitzanlab",
+    scholar: "https://scholar.google.com/citations?user=D7WH8ksAAAAJ&hl=en"
+  },
+  {
+    id: "tal",
+    name: "Amir Tal",
+    photo: "images/amir-tal.jpg",
+    tags: ["Computational cognition", "Learning and memory", "Consciousness"],
+    summary: "Tal studies implicit and nonconscious processes underlying learning, memory, and higher-order cognition. His research explores how knowledge is automatically acquired and reorganized through interaction with the environment, including through humor and social cognition.",
+    lab: "",
+    github: "",
+    scholar: "https://scholar.google.com/citations?user=adoHflgAAAAJ&hl=en"
+  },
+];
+
+const HARVARD_FACULTY = [
+  {
+    id: "du",
+    name: "Yilun Du",
+    photo: "images/yilun-du.jpg",
+    tags: ["Generative models", "Embodied AI", "Machine learning"],
+    summary: "Du develops machine learning systems that learn structured representations of the physical and social world through interaction and generation. His research focuses on generative modeling, embodied intelligence, and building AI systems that can reason, plan, and adapt in complex environments.",
+    lab: "https://embodied-minds-lab.github.io/",
+    github: "https://github.com/yilundu",
+    scholar: "https://scholar.google.com/citations?user=GRMMc_MAAAAJ&hl=en"
+  },
+  {
+    id: "kakade",
+    name: "Sham Kakade",
+    photo: "images/sham-kakade.jpg",
+    tags: ["Machine learning", "Reinforcement learning", "Optimization"],
+    summary: "Kakade develops mathematical foundations for machine learning, reinforcement learning, and optimization. His work has contributed to modern approaches for efficient learning, decision-making, and large-scale AI systems.",
+    lab: "https://shamulent.github.io/",
+    github: "",
+    scholar: "https://scholar.google.com/citations?user=wb-DKCIAAAAJ&hl=en"
+  },
+  {
+    id: "rajan",
+    name: "Kanaka Rajan",
+    photo: "images/kanaka-rajan.avif",
+    tags: ["Computational neuroscience", "Neural dynamics", "Machine learning"],
+    summary: "Rajan develops theoretical and machine learning frameworks to understand how neural circuits generate flexible behavior and cognition. Her work bridges artificial and biological neural networks to study emergent computation in complex systems.",
+    lab: "https://www.rajanlab.com/kanaka-rajan",
+    github: "https://github.com/rajanlab/",
+    scholar: "https://scholar.google.com/citations?user=IC6n33kAAAAJ&hl=en"
+  },
+  {
+    id: "pehlevan",
+    name: "Cengiz Pehlevan",
+    photo: "images/cengiz-pehlevan.jpg",
+    tags: ["Theoretical neuroscience", "Machine learning", "Neural representations"],
+    summary: "Pehlevan studies the computational principles underlying learning and representation in neural systems. His research uses theoretical neuroscience and machine learning to understand how efficient representations emerge in biological and artificial networks.",
+    lab: "https://seas.harvard.edu/about-us/directory?search=%22Cengiz%20Pehlevan%22",
+    github: "https://github.com/Pehlevan-Group",
+    scholar: "https://scholar.google.com/citations?user=veDLTPEAAAAJ&hl=en"
+  },
+  {
+    id: "brantley",
+    name: "Kianté Brantley",
+    photo: "images/kiante-brantley.jpg",
+    tags: ["Machine learning", "AI alignment", "Reinforcement learning"],
+    summary: "Brantley works on machine learning systems that can learn efficiently and safely in complex environments. His research focuses on reinforcement learning, alignment, and adaptive decision-making in artificial agents.",
+    lab: "https://xkianteb.github.io/",
+    github: "https://github.com/xkianteb?tab=repositories",
+    scholar: "https://scholar.google.com/citations?user=8S5AOggAAAAJ&hl=en"
+  },
+  {
+    id: "murthy",
+    name: "Venki Murthy",
+    photo: "images/venki-murthy.jpg",
+    tags: ["Neuroscience", "Behavior", "Neural circuits"],
+    summary: "Murthy studies how neural circuits generate behavior, with a focus on sensory-guided actions and naturalistic behaviors. His lab combines large-scale recordings, imaging, and computational analysis to understand brain function during real-world tasks.",
+    lab: "https://vnmurthylab.org/",
+    github: "https://github.com/VNMurthyLab",
+    scholar: "https://scholar.google.com/citations?user=vSeHOe4AAAAJ&hl=en"
+  },
+  {
+    id: "amematsro",
+    name: "Elom Amematsro",
+    photo: "images/elom-amemastro.jpg",
+    tags: ["Systems neuroscience", "Neural circuits", "Behavior"],
+    summary: "Amematsro studies how neural circuits regulate behavior and internal brain states. His work combines systems neuroscience approaches with behavioral analysis to investigate how distributed neural activity shapes adaptive actions.",
+    lab: "https://eaamematsro.github.io/",
+    github: "https://github.com/eaamematsro",
+    scholar: ""
+  },
+];
+
+function renderFaculty(data, gridId, badgeId) {
+  const grid = document.getElementById(gridId);
+  const badge = document.getElementById(badgeId);
+  data.forEach(f => {
+    const el = document.createElement('article');
+    el.className = 'card';
+    el.dataset.search = [f.name, ...f.tags].join(' ').toLowerCase();
+    el.innerHTML = `
+      <img class="card-photo" src="${f.photo || ''}" alt="${f.name}" loading="lazy">
+      <div class="card-body">
+        <div class="card-name">${f.name}</div>
+        <div class="card-tags">${f.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+      </div>
+    `;
+    el.addEventListener('click', () => openPeek(f));
+    grid.appendChild(el);
+  });
+  badge.textContent = `${data.length} faculty`;
+}
+
+renderFaculty(HARVARD_FACULTY, 'harvardGrid', 'harvardBadge');
+renderFaculty(FACULTY, 'hujiGrid', 'hujiBadge');
+
+const peek        = document.getElementById('peek');
+const overlay     = document.getElementById('overlay');
+const peekName    = document.getElementById('peekName');
+const peekPhoto   = document.getElementById('peekPhoto');
+const peekLinks   = document.getElementById('peekLinks');
+const peekSummary = document.getElementById('peekSummary');
+
+function openPeek(f) {
+  peekName.textContent = f.name;
+  peekSummary.textContent = f.summary;
+  peekPhoto.src = f.photo;
+  peekPhoto.alt = f.name;
+  peekLinks.innerHTML = '';
+  if (f.lab)    peekLinks.innerHTML += `<a class="peek-link" href="${f.lab}" target="_blank" rel="noopener">Lab site</a>`;
+  if (f.github) peekLinks.innerHTML += `<a class="peek-link" href="${f.github}" target="_blank" rel="noopener">GitHub</a>`;
+  if (f.scholar) peekLinks.innerHTML += `<a class="peek-link" href="${f.scholar}" target="_blank" rel="noopener">Scholar</a>`;
+  peek.classList.add('open');
+  overlay.classList.add('show');
+  history.pushState(null, '', `#${f.id}`);
+}
+
+function closePeek() {
+  peek.classList.remove('open');
+  overlay.classList.remove('show');
+  history.pushState(null, '', location.pathname);
+}
+
+document.getElementById('peekClose').addEventListener('click', closePeek);
+overlay.addEventListener('click', closePeek);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePeek(); });
+
+if (location.hash) {
+  const id = location.hash.slice(1);
+  const f = [...FACULTY, ...HARVARD_FACULTY].find(f => f.id === id);
+  if (f) openPeek(f);
+}
+
+document.getElementById('search').addEventListener('input', function () {
+  const q = this.value.toLowerCase();
+  function filterGrid(gridId, badgeId) {
+    let visible = 0;
+    document.querySelectorAll(`#${gridId} .card`).forEach(card => {
+      const show = card.dataset.search.includes(q);
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    document.getElementById(badgeId).textContent = `${visible} faculty`;
+  }
+  filterGrid('hujiGrid', 'hujiBadge');
+  filterGrid('harvardGrid', 'harvardBadge');
+});
+</script>
+
+</body>
+</html>

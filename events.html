@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Events — Kempner × ELSC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">Kempner <span class="x">×</span> ELSC</a>
+    <nav class="nav-links">
+      <a href="faculty.html">Faculty</a>
+      <a href="news.html">News</a>
+      <a href="events.html" class="active">Events</a>
+      <a href="publications.html">Publications</a>
+    </nav>
+    <div class="nav-actions"></div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <a class="page-back" href="index.html">← Back to directory</a>
+    <h1>Events</h1>
+    <p class="page-header-sub">Workshops, seminars, and joint events between Kempner and ELSC.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <ul class="events-list" id="eventsList"></ul>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-orgs">
+      Kempner Institute · Harvard University
+      &nbsp;·&nbsp;
+      Edmond &amp; Lily Safra Center for Brain Sciences · Hebrew University of Jerusalem
+    </p>
+    <a class="footer-link" href="https://forms.gle/WtfYGuhhZtTuePtv6" target="_blank" rel="noopener">
+      Indicate collaboration interest →
+    </a>
+  </div>
+</footer>
+
+<script>
+// ── EVENTS DATA — add items: { date, title, location, text, url } ─────────────
+const EVENTS = [
+  {
+    date: "Add date",
+    title: "Add a first event",
+    location: "Location",
+    text: "EVENT INFO",
+    url: "#"
+  },
+  {
+    date: "Add date",
+    title: "Add a second event",
+    location: "Location",
+    text: "EVENT INFO",
+    url: "#"
+  }
+];
+
+const eventsList = document.getElementById('eventsList');
+EVENTS.forEach(ev => {
+  const li = document.createElement('li');
+  li.className = 'event-item';
+  li.innerHTML = `
+    <span class="event-date">${ev.date}</span>
+    <div>
+      <a class="event-title" href="${ev.url}" target="_blank" rel="noopener">${ev.title}</a>
+      ${ev.location ? `<p class="event-location">${ev.location}</p>` : ''}
+      <p class="event-text">${ev.text}</p>
+    </div>
+  `;
+  eventsList.appendChild(li);
+});
+</script>
+
+</body>
+</html>
