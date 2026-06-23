@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects — Kempner × ELSC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">Kempner <span class="x">×</span> ELSC</a>
+    <nav class="nav-links">
+      <a href="faculty.html">Faculty</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="news.html">News</a>
+      <a href="events.html">Events</a>
+      <a href="publications.html">Publications</a>
+    </nav>
+    <div class="nav-actions"></div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <a class="page-back" href="index.html">← Back to home</a>
+    <h1>Projects</h1>
+    <p class="page-header-sub">Active collaborations between Kempner and ELSC researchers.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <ul class="projects-list" id="projectsList"></ul>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-orgs">
+      Kempner Institute · Harvard University
+      &nbsp;·&nbsp;
+      Edmond &amp; Lily Safra Center for Brain Sciences · Hebrew University of Jerusalem
+    </p>
+    <a class="footer-link" href="https://forms.gle/WtfYGuhhZtTuePtv6" target="_blank" rel="noopener">
+      Express collaboration interest →
+    </a>
+  </div>
+</footer>
+
+<script>
+// ── PROJECTS DATA ─────────────────────────────────────────────────────────────
+// Each project: { pis, blurb, tags }
+//   pis:   array of PI/lab names, e.g. ["Kanaka Rajan", "Jonathan Kadmon"]
+//   blurb: short paragraph describing the collaboration
+//   tags:  optional array of topic tags
+const PROJECTS = [
+  {
+    pis: ["PI Name (Kempner)", "PI Name (ELSC)"],
+    blurb: "Add a description of this collaboration here — what question are the labs jointly pursuing, what methods or complementary expertise do they bring, and what outcomes are expected.",
+    tags: ["Tag 1", "Tag 2", "Tag 3"]
+  },
+  {
+    pis: ["PI Name (Kempner)", "PI Name (ELSC)"],
+    blurb: "Add a description of this collaboration here — what question are the labs jointly pursuing, what methods or complementary expertise do they bring, and what outcomes are expected.",
+    tags: ["Tag 1", "Tag 2"]
+  },
+];
+
+const projectsList = document.getElementById('projectsList');
+PROJECTS.forEach(p => {
+  const li = document.createElement('li');
+  li.className = 'project-card';
+  const pisHtml = p.pis.map((name, i) =>
+    i < p.pis.length - 1
+      ? `${name}<span class="project-pi-sep">×</span>`
+      : name
+  ).join('');
+  const tagsHtml = p.tags && p.tags.length
+    ? `<div class="project-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>`
+    : '';
+  li.innerHTML = `
+    <div class="project-pis">${pisHtml}</div>
+    <p class="project-blurb">${p.blurb}</p>
+    ${tagsHtml}
+  `;
+  projectsList.appendChild(li);
+});
+</script>
+
+</body>
+</html>
